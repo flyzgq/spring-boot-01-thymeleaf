@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf in action</title>
+</head>
+<body>
+<!--引入头部信息-->
+<div th:replace="~{pub/header :: header}"></div>
+<h3 th:text="${title}"></h3>
+<div>
+    <a href="/users/form.html" th:href="@{/users/form}">创建用户</a>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>email</td>
+        <td>name</td>
+        <td>birth</td>
+        <td>creatTime</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${userList}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.email}"></td>
+        <td><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>
+        <td th:text="${#dates.format(user.birth, 'yyyy/MM/dd')}"></td>
+        <td th:text="${#dates.format(user.creatTime, 'yyyy/MM/dd HH:mm:ss')}"></td>
+        <td><a th:href="@{'/users/delete/'+${user.id}}">删除</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<!--引入尾部信息-->
+<div th:replace="~{pub/footer :: footer}"></div>
+</body>
+</html>

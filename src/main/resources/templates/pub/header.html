@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf in action</title>
+</head>
+<body>
+<div th:fragment="header">
+    <h1>Thymeleaf in action</h1>
+    <a href="/users" th:href="@{~/users}">首页</a>
+</div>
+<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button">
+
+        </button>
+    <a class="navbar-brand" href="/" th:href="@{~/}">NewStarBlog</a>
+        <div></div>
+    </div>
+</nav>
+</body>
+</html>
